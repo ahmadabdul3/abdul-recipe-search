@@ -18,7 +18,9 @@ actions.searchForRecipes = function(data) {
       ).then(
         (res) => res.json()
       ).then((res) => {
-        console.log(res);
+        // - only get first 20 results
+        const data = res.results.splice(0, 20);
+        actions.searchForRecipesComplete(data);
       }).catch((err) => {
 
       });

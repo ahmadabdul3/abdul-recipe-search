@@ -9,9 +9,13 @@ export default class AppBody extends Component {
     this.props.searchForRecipes(e.target.value);
   }
 
-  render() {
+  renderResults() {
     const { searchResults } = this.props;
 
+    return searchResults.map((result, key) => <SearchResult text={result} key={key} />);
+  }
+
+  render() {
     return (
       <div className='app-body'>
         <div className='input-button-combo'>
@@ -24,9 +28,7 @@ export default class AppBody extends Component {
           </button>
         </div>
         <div className='search-results'>
-          {
-            searchResults.map((result, key) => <SearchResult text={result} key={key} />)
-          }
+          { this.renderResults() }
         </div>
       </div>
     );
